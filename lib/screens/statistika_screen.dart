@@ -24,29 +24,35 @@ class _StatistikaScreenState extends State<StatistikaScreen> {
             children: [
               ...List.generate(
                 2,
-                (index) => WCards(
+                (index) => Expanded(
+                  child: WCards(
+                    onTab: () {},
+                    cardSvg: "",
+                    cardInfo: "ta mijoz sotuv qildi",
+                    cardNumber: 200,
+                    cardColor: Colors.blue,
+                    svgIcon: false,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: WCards(
                   onTab: () {},
                   cardSvg: "",
-                  cardInfo: "ta mijoz sotuv qildi",
+                  cardInfo: "ta mijoz bilan gplashadi",
                   cardNumber: 200,
                   cardColor: Colors.blue,
                   svgIcon: false,
                 ),
               ),
-            ],
-          ),
-           Row(
-             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              WCards(
-                onTab: () {},
-                cardSvg: "",
-                cardInfo: "ta mijoz bilan gplashadi",
-                cardNumber: 200,
-                cardColor: Colors.blue,
-                svgIcon: false,
+              const Expanded(
+                child: SizedBox(width: 130),
               ),
-              const SizedBox(width: 130),
             ],
           ),
         ],

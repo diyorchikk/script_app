@@ -4,7 +4,6 @@ import 'package:script_app/screens/statistika_screen.dart';
 import '../resources/app_icons.dart';
 import '../resources/colors.dart';
 import '../resources/styles.dart';
-import '../widgets/pop_menu.dart';
 import '../widgets/w_cards.dart';
 import 'calling_cards.dart';
 
@@ -66,95 +65,91 @@ class _SkriptlarScreenState extends State<SkriptlarScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      cardNumber++;
-                    });
-                  },
-                  child: Container(
-                    width: 130,
-                    height: 130,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFE9E8E8),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        cardNumber++;
+                      });
+                    },
+                    child: Container(
+                      width: 130,
+                      height: 130,
+                      margin: const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
                       ),
-                    ),
-                    child: Center(
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFC6C6C6),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(6),
-                          ),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFE9E8E8),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
                         ),
-                        child: Center(
-                          child: SvgPicture.asset("assets/images/svg/plus.svg"),
+                      ),
+                      child: Center(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFFC6C6C6),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(6),
+                            ),
+                          ),
+                          child: Center(
+                            child: SvgPicture.asset("assets/images/svg/plus.svg"),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-                 WCards(
-                  onTab: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
-                  },
-                  cardSvg: AppIcons.spidametr,
-                  cardInfo: "O'quvchilar bilan ishlash",
-                  cardNumber: 200,
-                  cardColor: Colors.blue,
-                  svgIcon: true,
+                 Expanded(
+                   child: WCards(
+                    onTab: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
+                    },
+                    cardSvg: AppIcons.spidametr,
+                    cardInfo: "O'quvchilar bilan ishlash",
+                    cardNumber: 200,
+                    cardColor: Colors.blue,
+                    svgIcon: true,
                 ),
+                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Column(
               children: [
-                Column(
-                  children: [
-                    ...List.generate(
-                      cardNumber,
-                      (index) => Column(
-                        children: [
-                          WCards(
-                            onTab: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
-                            },
-                            cardSvg: AppIcons.search,
-                            cardInfo: "Kurs narxlarini aniqlab olish",
-                            cardNumber: 200,
-                            cardColor: Colors.blue,
-                            svgIcon: false,
-                          ),
-                        ],
+                ...List.generate(
+                  cardNumber,
+                  (index) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: WCards(
+                          onTab: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
+                          },
+                          cardSvg: AppIcons.search,
+                          cardInfo: "Kurs narxlarini aniqlab olish",
+                          cardNumber: 200,
+                          cardColor: Colors.blue,
+                          svgIcon: false,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ...List.generate(
-                      cardNumber,
-                      (index) => Column(
-                        children: [
-                          WCards(
-                            onTab: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
-                            },
-                            cardSvg: "AppIcons.search",
-                            cardInfo: "Kurs narxlarini aniqlab olish",
-                            cardNumber: 200,
-                            cardColor: Colors.blue,
-                            svgIcon: false,
-                          ),
-                        ],
+                      Expanded(
+                        child: WCards(
+                          onTab: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
+                          },
+                          cardSvg: AppIcons.search,
+                          cardInfo: "Kurs narxlarini aniqlab olish",
+                          cardNumber: 200,
+                          cardColor: Colors.blue,
+                          svgIcon: false,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

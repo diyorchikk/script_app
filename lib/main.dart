@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:script_app/screens/Skriptlar_screen.dart';
-import 'package:script_app/screens/data_user.dart';
 
 void main() {
   runApp(const MyApp());

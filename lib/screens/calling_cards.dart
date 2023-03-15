@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../resources/app_icons.dart';
 import '../widgets/w_call_number.dart';
 import '../widgets/w_cards.dart';
-import 'choices_screen.dart';
 import 'data_user.dart';
 
 class CallingCards extends StatefulWidget {
@@ -30,45 +29,43 @@ class _CallingCardsState extends State<CallingCards> {
               name: "Bobobek Turdiyev",
               number: "+998 66 230 00 15",
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Column(
               children: [
-                Column(
-                  children: [
-                    ...List.generate(
-                      3,
-                          (index) =>  WCards(
-                            onTab: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChoicesScreen(),),);
-                            },
-                        cardSvg: AppIcons.search,
-                        cardInfo: "Kurs narxlarini aniqlab olish",
-                        cardNumber: 200,
-                        cardColor: Colors.blue,
-                        svgIcon: true,
+                ...List.generate(
+                  1,
+                      (index) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Expanded(
+                        child: WCards(
+                          onTab: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
+                          },
+                          cardSvg: AppIcons.spidametr,
+                          cardInfo: "Kurs narxlarini aniqlab olish",
+                          cardNumber: 200,
+                          cardColor: Colors.blue,
+                          svgIcon: true,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ...List.generate(
-                      3,
-                          (index) => WCards(
-                            onTab: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChoicesScreen(),),);
-                            },
-                        cardSvg: AppIcons.spidametr,
-                        cardInfo: "Online kursga yozilish",
-                        cardNumber: 200,
-                        cardColor: Colors.blue,
-                        svgIcon: true,
+                      Expanded(
+                        child: WCards(
+                          onTab: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CallingCards(),),);
+                          },
+                          cardSvg: AppIcons.search,
+                          cardInfo: "Kurs narxlarini aniqlab olish",
+                          cardNumber: 200,
+                          cardColor: Colors.blue,
+                          svgIcon: true,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
+
           ],
         ),
       ),
